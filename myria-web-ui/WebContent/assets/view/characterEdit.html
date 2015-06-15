@@ -1,0 +1,26 @@
+
+			<label>Character Name:</label><input type="text" name="characterName" ng-model="model.character.name">
+			<div><label>Male</label><input type="radio" name="gender" value="male"><label>Female</label><input type="radio" name="gender" value="Female"></div>
+			<div><select name=race ng-model="model.character.race">
+	    		<option value="h">Human</option>
+	    		<option value="e">Elf</option>
+	    		<option value="d">Dwarf</option>
+			</select></div>
+			<label>Points Remaining</label><span class="PointsRemaining"></span>
+			<p>
+			  <label for="spinner">Strength:</label>
+			  <input id="str" class="spinner" ng-model="model.character.str">
+			</p>
+			<p>
+			  <label for="spinner">Agility:</label>
+			  <input id="agi" class="spinner" ng-model="model.character.agi">
+			</p>
+			<p>
+			  <label for="spinner">Speed:</label>
+			  <input id="spe" class="spinner" ng-model="model.character.spe">
+			</p>
+			<p>
+			  <label for="spinner">Intelegence:</label>
+			  <input id="agi" class="spinner" ng-model="model.character.int">
+			</p>
+			<button ng-click="createCharacter()">Create</button>

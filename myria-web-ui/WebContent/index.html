@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>Myria</title>
+		<div class="col-sm-12 header-image" style="height:50px;background-color: transparent;border-radius: 4px; font-family:cursive;font-style: oblique;font-weight: bold;color:white;font-size: 200%;")><a href="#!account" style="float:right;text-align: center;font-size: 24">Login</a></div>
+	</head>
+	<body style="margin:10px;"  ng-app="myria">
+		  	<div ng-view></div>
+	
+	
+		<script type="text/javascript" src="./libs/angular/angular.min.js"></script>
+		<script type="text/javascript" src="./libs/angular-resource/angular-resource.min.js"></script>
+		<script type="text/javascript" src="./libs/angular-route/angular-route.min.js"></script>
+		<script type="text/javascript" src="./libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script type="text/javascript" src="./libs/sockjs/sockjs.js"></script>
+		<script type="text/javascript" src="./libs/stomp-websocket/lib/stomp.js"></script>
+		<script type="text/javascript" src="./libs/showdown/compressed/showdown.js"></script>
+		<script type="text/javascript" src="./libs/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
+		<script type="text/javascript" src="./app/app.js"></script>
+		<script type="text/javascript" src="./app/message/messageService.js"></script>
+		<script type="text/javascript" src="./app/controllers.js"></script>
+		<script type="text/javascript" src="./app/command/command.js"></script>
+		<script type="text/javascript" src="./app/monster/monster.js"></script>
+		<script type="text/javascript" src="./app/items/items.js"></script>
+
+		<!-- 
+		<script type="text/javascript" src="./app/message/message.js"></script>
+		 -->
+		 <link rel="stylesheet" href="./assets/css/app.css">		
+		<link rel="stylesheet" href="./assets/css/bootstrap.css">	
+		<link rel="stylesheet" type="text/css" href="./libs/ng-prettyjson/dist/ng-prettyjson.min.css">
+	</body>
+</html>

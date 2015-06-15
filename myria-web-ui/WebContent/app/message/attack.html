@@ -1,0 +1,19 @@
+<div class="attack-msg-box col-sm-12">
+	<div class="row">
+		<Span>{{message.message.attacker}} vs. {{message.message.defender}}</Span>
+		<Span ng-show="message.message.hitCheck.value1 > message.message.hitCheck.value2"> and Hits! for {{message.message.damageCalculation.totalDamage}} points of damage to {{message.message.damageCalculation.bodyPart}}.</Span>
+		<Span ng-show="message.message.hitCheck.value1 < message.message.hitCheck.value2"> and Misses!</Span>
+	
+	</div>
+	<div class="row">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-10">
+			<Span>{{message.message.attackType}} AS: {{message.message.hitCheck.value1}} DS: {{message.message.hitCheck.value2}} </Span>
+			
+			<div ng-repeat="damage in message.message.damageCalculation.damageAmounts  track by $index">
+				{{damage.amount}}  {{damage.damageType}} damage.  Armor absorbed {{damage.damageReduction}} points and has a remaining health of {{damage.reamainingArmorHealth}}
+			</div>
+		</div>
+	</div>
+
+</div>

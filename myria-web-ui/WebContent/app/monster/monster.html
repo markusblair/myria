@@ -1,0 +1,12 @@
+<div class="col-sm-1" style="border:black thin solid; border-radius: 4px; padding:2px; margin: 3px">
+
+    <img ng-if="monster.playerState == 'LAYING'" src="assets/images/laying.png"/>
+    <img ng-if="monster.playerState == 'SITTING'" src="assets/images/sitting.png"/>
+    <img ng-if="monster.playerState == 'STANDING'"  src="assets/images/standing.png"/>
+    <img ng-if="monster.playerState == 'STUNNED'" src="assets/images/stunned.png"/>
+
+    <progressbar ng-click="command('attack ' + monster.name)" value="monster.health" max="monster.maxHealth" type="{{healthBarType()}}">
+        <span  style="color:black; white-space:nowrap;">{{monster.health}}/{{monster.maxHealth}}</span>
+    </progressbar>
+    <span  style="color:black; white-space:nowrap; ">{{monster.name}}</span>
+</div>

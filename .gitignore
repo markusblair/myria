@@ -41,3 +41,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+websocket-angular/target
+websocket-angular/.settings
+websocket-angular/.project
+websocket-angular/.classpath

@@ -1,0 +1,104 @@
+body {
+	height:95%;
+}
+
+.header-image {
+    background-image:url(./images/headerimage.png);
+    background-repeat: no-repeat;
+}
+
+.icon-arrow {
+    content:url(./images/arrow.png) no-repeat;
+}
+
+.icon-door {
+    content:url(./images/door.png) no-repeat;
+}
+
+.icon-shield {
+    content:url(./images/shield.png) no-repeat;
+}
+
+.icon-iron-breats-plate {
+    content:url(./images/ironBreastPlate.png) no-repeat;
+}
+
+.icon-chain-mail {
+    content:url(./images/chainmail.png) no-repeat;
+}
+
+.icon-sword {
+    content:url(./images/sword.png) no-repeat;
+}
+
+.player-layout {
+	position:absolute;
+	background-color:ffffff;
+	border:1px solid black;
+	border-radius:4px;
+	/*
+	*/
+}
+
+.WEST {
+	
+	-webkit-transform: rotate(180deg); 
+    -moz-transform: rotate(180deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=20); /*for IE*/
+}
+
+.NORTH {
+	-webkit-transform: rotate(270deg); 
+    -moz-transform: rotate(270deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=30); /*for IE*/
+    top:0px;
+    right:32px;
+}
+
+.NORTHEAST {
+	-webkit-transform: rotate(315deg); 
+    -moz-transform: rotate(315deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=35); /*for IE*/
+    top:0px;
+    right:64px;
+}
+
+.NORTHWEST {
+	-webkit-transform: rotate(225deg); 
+    -moz-transform: rotate(225deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=25); /*for IE*/
+    top:0px;
+    right:0px;
+}
+
+.SOUTH {
+	-webkit-transform: rotate(90deg); 
+    -moz-transform: rotate(90deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=10); /*for IE*/
+}
+
+.SOUTHEAST {
+	-webkit-transform: rotate(45deg); 
+    -moz-transform: rotate(45deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5); /*for IE*/
+}
+
+.SOUTHWEST {
+	-webkit-transform: rotate(135deg); 
+    -moz-transform: rotate(135deg);  
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=15); /*for IE*/
+}
+
+.attack-msg-box {
+	outline: 1px solid #e9e9e9;
+	padding: 5px;
+	margin: 5px;
+	font-size: 13px;
+	line-height: 1.42857143;
+	color: #333;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}

@@ -1,0 +1,15 @@
+<div>	
+	Welcome ! When you are absorbed into the wonderful (slightly dangerous world) of myria, there will be some basic knowledge you will want to know before entering. Myria is a world with monsters and mountains and forests and oceans and many races of people and cities and caves. You can go on your own quest or tag along with a band of myrians. You can find loot, buy better weapons and armor, learn the arcane arts, slay beasts or talk to others in the city tavern. And just hope the people you find in on your journey don't try to attack you. Anyways, enough talk, lets go!
+	<br>
+	<div class="row" ng-repeat="c in model.characters track by $index" style="padding: 5px;">
+		<div class="col-sm-8" style="border: 1px solid; border-radius: 4px; padding: 5px; margin: 0px 5px 0px 5px; border-color: lightgray;">
+				<a href = "#!game?cid={{c.id}}">{{c.name}}</a>		
+				<div style="float:right">
+					<button type="button" class="btn btn-primary" ng-click="setCharacter(c.id)">Play</button>
+					<button type="button" class="btn" ng-click="deleteCharacter(c.id)">Delete</button>
+				</div>
+		</div> 
+	</div>
+	<br>
+	<button type="button" class="btn btn-primary" ng-click="characterEditor()">Create a New Character</button>
+</div>

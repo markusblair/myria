@@ -1,0 +1,33 @@
+package org.adventure.commands;
+
+import org.adventure.PlayerState;
+import org.adventure.character.ICharacter;
+
+public class StandUpCommand extends Action {
+
+	public StandUpCommand() {
+		super();
+		this.addCommandPattern("stand");
+		this.addCommandPattern("stand up");	
+	}
+
+	@Override
+	public void action(Command command, ICharacter character) {
+		if (character.getPlayerState().equals(PlayerState.STANDING) == false) {
+			if (character.getPlayerState().equals(PlayerState.LAYING)) {
+				character.setBusyFor(8);
+			}
+			else if (character.getPlayerState().equals(PlayerState.KNELLING)) {
+				character.setBusyFor(3);
+			}
+			else if (character.getPlayerState().equals(PlayerState.SITTING)) {
+				character.setBusyFor(5);
+			}
+			character.setState(PlayerState.STANDING);
+		}
+		else {
+			character.sendMessage("You are all ready standing.");
+		}
+	}
+
+}

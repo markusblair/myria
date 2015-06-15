@@ -1,0 +1,123 @@
+
+		<div class="col-sm-3 highlight">
+			<div class="row">
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow NORTHWEST" ng-click="command('go northwest')" ng-show="model.room.exits.indexOf('NORTHWEST') > -1"></div>
+				</div>
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow NORTH" ng-click="command('go north')" ng-show="model.room.exits.indexOf('NORTH') > -1"></div>
+		    	</div>
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow NORTHEAST" ng-click="command('go northeast')" ng-show="model.room.exits.indexOf('NORTHEAST') > -1"></div>
+		    	</div>
+	    	</div>
+	    	<div class="row">
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow WEST" ng-click="command('go west')" ng-show="model.room.exits.indexOf('WEST') > -1"></div>
+		    	</div>
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-door DOOR" ng-click="command('go door')" ng-show="model.room.exits.indexOf('DOOR') > -1"></div>
+		    	</div>
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow EAST" ng-click="command('go east')" ng-show="model.room.exits.indexOf('EAST') > -1"></div>
+		    	</div>
+	    	</div>
+	    	<div class="row">
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow SOUTHWEST" ng-click="command('go southwest')" ng-show="model.room.exits.indexOf('SOUTHWEST') > -1"></div>
+		    	</div>
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow SOUTH" ng-click="command('go south')" ng-show="model.room.exits.indexOf('SOUTH') > -1"></div>
+		    	</div>
+				<div class="col-sm-4" style="height:30px;width:30px">
+		    		<div class="exit icon-arrow SOUTHEAST" ng-click="command('go southeast')" ng-show="model.room.exits.indexOf('SOUTHEAST') > -1"></div>
+		    	</div>
+	    	</div>
+	    	<div   class="col-sm-12">
+	    	<!-- 
+		    	<div class="row" name=PlayerView" style="height:230px;width:140px;" class="img-player">
+		    		<div name="head" class="player-layout" style="height:40px;width:40px;top:0px;left:30px;"></div>
+		    		<div name="neck" class="player-layout"  style="height:10px;width:20px;top:40px;left:40px;"></div>
+		    		<div name="torso" class="player-layout icon-chain-mail" style="height:100px;width:80px;top:30px;left:20px;"></div>
+		    		<div name="leftArm" class="player-layout icon-shield" style="height:60px;width:50px;top:50px;left:0px;"></div>
+		    		<div name="rightArm" class="player-layout  icon-sword" style="height:60px;width:50px;top:50px;left:60px;"></div>
+		    		<div name="leftLeg" class="player-layout" style="height:80px;width:25px;top:130px;left:20px;"></div>
+		    		<div name="leftFoot" class="player-layout" style="height:10px;width:25px;top:210px;left:20px;"></div>
+		    		<div name="rightLeg" class="player-layout" style="height:80px;width:25px;top:130px;left:55px;"></div>
+		    		<div name="rightFoot" class="player-layout" style="height:10px;width:25px;top:210px;left:55px;"></div>
+		    	</div>
+	    	 -->
+	    		<div class="row"><span>Name: {{model.character.name}}</span>
+					<img ng-if="model.character.playerState == 'LAYING'" src="assets/images/laying.png"/>
+					<img ng-if="model.character.playerState == 'SITTING'" src="assets/images/sitting.png"/>
+					<img ng-if="model.character.playerState == 'STANDING'"  src="assets/images/standing.png"/>
+					<img ng-if="model.character.playerState == 'STUNNED'" src="assets/images/stunned.png"/>
+				</div>
+	    		<div class="row"> 
+	    				<progressbar value="model.character.health" max="model.character.maxHealth.stat" type="{{healthBarType()}}"><span style="color:black; white-space:nowrap;">Health {{model.character.health}} / {{model.character.maxHealth.stat}}</span></progressbar>
+	    		</div>
+	    		<div class="row"> 
+	    				<progressbar value="model.character.mind" max="model.character.maxMind" type="{{mindBarType()}}"><span style="color:black; white-space:nowrap;">Mind {{model.character.mind}} / {{model.character.maxMind}}</span></progressbar>
+	    		</div>
+				<div class="row">
+					<progressbar value="model.character.mana" max="model.character.maxMana" type="{{manaBarType()}}"><span style="color:black; white-space:nowrap;">Mana {{model.character.mana}} / {{model.character.maxMana}}</span></progressbar>
+				</div>
+
+	    		<div class="mana row"> Mana</div>
+	    		<div class="row">
+	    		Right:
+		    		<item-display item="model.character.rightHand"/>
+	    		</div>
+	    		<div class="row">
+	    		Left:
+	    			<item-display item="model.character.leftHand"/>
+	    		</div>
+	    		<div class="gold row">
+	    		Gold:
+	    		{{model.character.gold.amount}}
+	    		</div>
+				<div class="row">
+					Body Parts:
+					<div ng-repeat="bodyPart in model.character.bodyParts">
+						{{bodyPart.name}} : {{bodyPart.health}} : {{bodyPart.injury}}
+					</div>
+				</div>
+	    		<div class="row">
+	    			Worn Items:
+	    			<item-display item="container" ng-repeat="container in model.character.containers  track by $index">
+	    		</div>
+	    		
+	    		
+	    	</div>
+		</div>
+		<div class="col-sm-6 main panel">
+			<div class="col-sm-12">
+			    <div>Room:<span>{{model.room.name}}</span>
+					<br/> <span id="room_description">{{model.room.description}}</span>
+
+				</div>
+				<br/>
+				<span class="col-sm-3">Also here is </span>
+				<br/>
+				<div ng-if="model.room.characterMap" style="border:solid thin black; border-radius: 4px; height:110px">
+					<monster-display monster="m" ng-repeat="(id, m) in model.room.characterMap  track by $index">
+					</monster-display>
+				</div>
+
+			    	<item-display item="item" ng-repeat="item in model.room.items  track by $index">
+			    	</item-display>
+
+			
+			</div>
+			{{model.character.busy}} <command/>
+			<div ng-repeat="message in model.messages  track by $index">
+				<ng-include src="message.type"></ng-include>
+			</div>
+		</div>
+
+		<div class="col-sm-3">
+			<div ng-repeat="msg in model.rawMessage | reverse">
+				<pre pretty-json="msg"></pre>
+			</div>
+
+		</div>
