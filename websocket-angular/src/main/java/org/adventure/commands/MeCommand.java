@@ -26,10 +26,15 @@ public class MeCommand extends Action {
 		result.append(character.getExperience());
 		result.append(" You are wearing: ");
 		Collection<List<IWearable>> clothes = character.getClothing().values();
+		int clothingItemsWorn =0;
 		for (List<IWearable> list : clothes) {
 			for (IWearable iWearable : list) {
 				result.append(iWearable.getDescription());
+				clothingItemsWorn++;
 			}
+		}
+		if (clothingItemsWorn ==0) {
+			result.append(" Nothing At All! ");
 		}
 		if (character.getRightHand() != null) {
 			result.append("You are carring " + character.getRightHand().getDescription() + " in your right hand.");
