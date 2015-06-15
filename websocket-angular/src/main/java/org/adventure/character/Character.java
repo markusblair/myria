@@ -433,27 +433,6 @@ public class Character implements ICharacter {
 		return cnt;
 	}
 
-
-	@Override
-	public String describeMe() {
-		StringBuilder result = new StringBuilder();
-		result.append("Exp:");
-		result.append(getExperience());
-		result.append(" You are wearing: ");
-		Collection<List<IWearable>> clothes = this.getCharacterData().getClothing().values();
-		for (List<IWearable> list : clothes) {
-			for (IWearable iWearable : list) {
-				result.append(iWearable.getDescription());
-			}
-		}
-		if (getRightHand() != null) {
-			result.append("You are carring " + getRightHand().getDescription() + " in your right hand.");
-		}
-		if (getLeftHand() != null) {
-			result.append("You are carring " + getLeftHand().getDescription() + " in your left hand.");
-		}
-		return result.toString();
-	}
 	@Override
 	public boolean unWear(IWearable wearable) {
 		boolean result = false;

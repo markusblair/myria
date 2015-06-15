@@ -76,8 +76,6 @@ public interface ICharacter extends IContainer, IItem {
 
 	public abstract int getFreeHands();
 
-	public abstract String describeMe();
-
 	public abstract boolean unWear(IWearable wearable);
 
 	public abstract boolean unWear(Armor armor);
