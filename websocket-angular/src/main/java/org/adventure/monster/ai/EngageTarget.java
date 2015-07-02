@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class EngageTarget implements IAiChainHandler {
-	Logger log = LoggerFactory.getLogger(BattleReadyTargetIsAvailable.class);
+	Logger log = LoggerFactory.getLogger(EngageTarget.class);
 	private ITargetSelector targetSelector;
 	
 	public EngageTarget(ITargetSelector targetSelector) {

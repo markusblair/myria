@@ -15,9 +15,14 @@ public class EngageCommand extends CharacterCommand {
 	public void action(Command command, ICharacter character) {
 		super.action(command, character);
 		ICharacter target = getCharacter("<character>", character);
-		character.getCurrentRoom().joinCharacterGroup(character, target);
-		character.sendMessage("You engage the " + target.getName() + ".");
-		character.sendMessageToRoom(character.getName() + " enagages " + target.getName());
+		if (target != null) {
+			character.getCurrentRoom().joinCharacterGroup(character, target);
+			character.sendMessage("You engage the " + target.getName() + ".");
+			character.sendMessageToRoom(character.getName() + " enagages " + target.getName());			
+		}
+		else {
+			character.sendMessage("engage what?");
+		}
 	}
 
 	@Override

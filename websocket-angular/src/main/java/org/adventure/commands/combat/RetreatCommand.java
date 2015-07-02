@@ -14,7 +14,7 @@ public class RetreatCommand  extends CharacterCommand {
 	@Override
 	public void action(Command command, ICharacter character) {
 		super.action(command, character);
-		ICharacter target = getCharacter("<character>", character);
+//		ICharacter target = getCharacter("<character>", character);
 		CharacterGroup characterGroup = character.getCurrentRoom().getCharacterGroup(character);
 		if (characterGroup != null) {
 			characterGroup.removeCharacter(character);

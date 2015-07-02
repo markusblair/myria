@@ -17,13 +17,17 @@ public class PutCommand extends ItemCommand {
 		super.action(command, character);
 		// Is the item in your hand.
 		ItemSearchResult itemSearchResult = getItem("<item>", character);
-		IContainer container = (IContainer)getItem("<container>", character).getItem();
-		if (container != null && itemSearchResult != null) {
-			container.addItem(itemSearchResult.getItem());
-			itemSearchResult.getContainer().removeItem(itemSearchResult.getItem());
-			character.sendMessage(new StringBuilder("You put the ").append(command.getItem("<item>"))
-					.append(" in the ").append(command.getItem("<container>")).toString());
-		} 
+		ItemSearchResult containerSearch = getItem("<container>", character);
+		if (containerSearch != null) {
+			IContainer container = (IContainer)containerSearch.getItem();
+			if (container != null && itemSearchResult != null) {
+				container.addItem(itemSearchResult.getItem());
+				itemSearchResult.getContainer().removeItem(itemSearchResult.getItem());
+				character.sendMessage(new StringBuilder("You put the ").append(command.getItem("<item>"))
+						.append(" in the ").append(command.getItem("<container>")).toString());
+			} 
+			
+		}
 
 	}
 

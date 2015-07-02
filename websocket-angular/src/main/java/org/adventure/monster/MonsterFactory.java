@@ -13,6 +13,19 @@ import org.adventure.monster.ai.DefaultTargetSelector;
 import org.adventure.monster.ai.EngageTarget;
 import org.adventure.monster.ai.FleeWhenOverwhelmed;
 import org.adventure.monster.ai.ITargetSelector;
+import org.adventure.npc.ai.BTLibrary;
+import org.adventure.npc.ai.ParentTask;
+import org.adventure.npc.ai.Task;
+import org.adventure.npc.ai.tasks.AttackTask;
+import org.adventure.npc.ai.tasks.ClearTargetTask;
+import org.adventure.npc.ai.tasks.EngageTargetTask;
+import org.adventure.npc.ai.tasks.MoveTask;
+import org.adventure.npc.ai.tasks.SelectorTask;
+import org.adventure.npc.ai.tasks.SequenceTask;
+import org.adventure.npc.ai.tasks.conditionals.IsTargetEngaged;
+import org.adventure.npc.ai.tasks.conditionals.IsTargetValidTask;
+import org.adventure.npc.ai.tasks.conditionals.IsUsingMeleeWeapon;
+import org.adventure.npc.ai.tasks.targetselectors.SelectTargetTask;
 import org.adventure.random.SkillType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,11 +55,13 @@ public class MonsterFactory implements IMonsterFactory {
 			monster.setStrength(4);
 			monster.setAgility(8);
 			monster.addSkillLevel(SkillType.MELEE);
-			targetSelector = new DefaultTargetSelector(monster);
-			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
-			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(2));
-			monster.getAiManager().addChainHandler(new EngageTarget(targetSelector));
-			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
+//			targetSelector = new DefaultTargetSelector(monster);
+			
+
+//			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
+//			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(2));
+//			monster.getAiManager().addChainHandler(new EngageTarget(targetSelector));
+//			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
 			break;
 		case 2:
 			monster = new Monster("Kobold", 0, 25, 4, webSocketDataService);
@@ -54,11 +69,17 @@ public class MonsterFactory implements IMonsterFactory {
 			monster.setStrength(6);
 			monster.setAgility(10);
 			monster.addSkillLevel(SkillType.MELEE);
-			targetSelector = new DefaultTargetSelector(monster);
-			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
-			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(2));
-			monster.getAiManager().addChainHandler(new EngageTarget(targetSelector));
-			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
+			Task parentTask = new SelectorTask().add(new SelectTargetTask())
+					.add(new SequenceTask()
+							.add(new EngageTargetTask())
+							.add(new AttackTask()));
+				monster.setMonsterBehaviorTree(parentTask);	
+			
+//			targetSelector = new DefaultTargetSelector(monster);
+//			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
+//			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(2));
+//			monster.getAiManager().addChainHandler(new EngageTarget(targetSelector));
+//			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
 			break;
 		case 3:
 			monster = new Monster("Orc", 0, 40, 4, webSocketDataService);
@@ -67,22 +88,33 @@ public class MonsterFactory implements IMonsterFactory {
 			monster.setAgility(8);
 			monster.addSkillLevel(SkillType.MELEE);
 			monster.addSkillLevel(SkillType.MELEE);
-			targetSelector = new DefaultTargetSelector(monster);
-			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
-			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(0.5f));
-			monster.getAiManager().addChainHandler(new EngageTarget(targetSelector));
-			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
+//			targetSelector = new DefaultTargetSelector(monster);
+//			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
+//			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(0.5f));
+//			monster.getAiManager().addChainHandler(new EngageTarget(targetSelector));
+//			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
 			break;
 		default:
 			monster = new Monster("Rat", 0, 5, 6, webSocketDataService);
 			Weapon w = new Weapon().setWeaponType(SkillType.HAND_TO_HAND).addDamage("Bite", DamageType.PIERCE,  2, 1);
 			monster.setDefaultWeapon(w);
-			targetSelector = new DefaultTargetSelector(monster);
-			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
-			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(4f));
-			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
+//			targetSelector = new DefaultTargetSelector(monster);
+//			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
+//			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(4f));
+//			monster.getAiManager().addChainHandler(new AttackTarget(targetSelector));
 			break;
 		} 
+		monster.setMonsterBehaviorTree(
+				new SelectorTask()
+					.add(new IsTargetValidTask()
+						.ifTrue(BTLibrary.DEFAULT_ATTACK_TREE)
+						.ifFalse(new SequenceTask()
+							.add(new ClearTargetTask())
+							.add(new SelectTargetTask())
+							)
+						)
+					.add(new MoveTask())
+					);
 		if (level > 0)
 			addItems(monster);
 		return monster;

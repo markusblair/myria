@@ -2,7 +2,6 @@ package org.adventure.character;
 
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -749,8 +748,17 @@ public class Character implements ICharacter {
 		sendDataMessage(new DataMessage().updateCharacter(getId(), "busy", busyFor));
 		int initalValue = this.busyFor.getAndAdd(busyFor);
 		if (initalValue <= 0 && timerTask == null) {
-			timer.scheduleAtFixedRate(getTimerTask(), 0, 1000);
+			try {
+				getTimer().scheduleAtFixedRate(getTimerTask(), 0, 1000);
+			} catch (Exception e) {
+				timer = new Timer();
+				getTimer().scheduleAtFixedRate(getTimerTask(), 0, 1000);
+			}
 		}
+	}
+
+	protected Timer getTimer() {
+		return timer;
 	}
 	
 	public int getBusyFor() {

@@ -16,6 +16,7 @@ import org.adventure.character.BodyPartType;
 import org.adventure.character.Character;
 import org.adventure.character.CharacterData;
 import org.adventure.character.CharacterDataEffectsProxy;
+import org.adventure.character.DataMessage;
 import org.adventure.character.ICharacter;
 import org.adventure.character.IWebSocketDataService;
 import org.adventure.character.stats.StatReference;
@@ -27,6 +28,9 @@ import org.adventure.commands.navigation.Direction;
 import org.adventure.commands.navigation.MoveCommand;
 import org.adventure.monster.ai.IAiChainManager;
 import org.adventure.monster.ai.MonsterAiManager;
+import org.adventure.npc.ai.BTContext;
+import org.adventure.npc.ai.BTTaskContext;
+import org.adventure.npc.ai.Task;
 import org.adventure.random.RandomCollection;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -70,6 +74,7 @@ public class Monster extends Character {
 			}
 			setCurrentRoom(room);
 			this.getCurrentRoom().addCharacter(this);
+			this.sendDataMessageToRoom(new DataMessage().addCharacter(this), false);
 			getAiTask();
 		}
 	}
@@ -101,34 +106,20 @@ public class Monster extends Character {
 		return this.iAiChainManager;
 	}
 	
+	private Task task;
+	private BTContext context;
+	
+	public void setMonsterBehaviorTree(Task task) {
+		this.task = task;
+	}
 	protected void monsterAi() {
-		iAiChainManager.processChain(this);
-//		
-//		if (getPlayerState().equals(PlayerState.LAYING)) {
-//			new StandUpCommand().performAction(null, this);
-//		}
-//		else {
-//			ICharacter target = selectTarget();
-//			if (target != null) {
-//				Command command = new Command("Attack "+ target.getName());
-//				AttackCommand attackCommand = new AttackCommand();
-//				attackCommand.matches(command);
-//				attackCommand.performAction(command, this);
-//			}
-//			else {
-//				Direction direction = new RandomCollection<>(this.getCurrentRoom().getExits()).next();
-//				List<Action> actions = getCurrentRoom().getValidCommands(this);
-//				for (Action action : actions) {
-//					if (action instanceof MoveCommand) {
-//						MoveCommand move = (MoveCommand) action;
-//						if (move.getDirection().equals(direction)) {
-//							move.move(this);
-//						}
-//					}
-//				}
-//				
-//			} 
-//		}
+		if (this.context == null) {
+			this.context = new BTContext();
+			this.context.put(BTContext.MONSTER, this);
+		}
+		if (this.task != null) {
+			this.task.doAction(this.context);			
+		}
 	}
 
 	protected ICharacter selectTarget() {

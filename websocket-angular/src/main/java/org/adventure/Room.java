@@ -204,6 +204,7 @@ public class Room extends CharacterGroup implements IContainer {
 //	
 	public void removeCharacter(ICharacter character) {
 		super.removeCharacter(character);
+		character.sendDataMessageToRoom(new DataMessage().removeCharacter(character), false);
 		this.meleeBattles.removeFromGroup(character);
 	}
 //	
