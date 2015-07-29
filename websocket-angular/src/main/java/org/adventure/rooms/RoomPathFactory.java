@@ -19,7 +19,7 @@ public class RoomPathFactory {
 	private int forks;
 	private String prefix = "path";
 	private String defaultDescription;
-	private int travelSpeed;
+	private int travelSpeed = 10;
 	private String name;
 	private boolean autojoinAdjacentRooms = false;
 	

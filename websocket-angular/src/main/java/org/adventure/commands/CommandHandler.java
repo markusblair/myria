@@ -93,6 +93,7 @@ public class CommandHandler {
 		validCommands.add(sayCommand);			
 		validCommands.add(new AttackCommand());
 		validCommands.add(new LoadCommand());
+		validCommands.add(new EatCommand());
 		validCommands.add(castSpellAction);
 		validCommands.add(dragCommand);
 		validCommands.add(swapCommand);

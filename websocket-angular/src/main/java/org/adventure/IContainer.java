@@ -3,7 +3,7 @@ package org.adventure;
 import org.adventure.items.IItem;
 import org.adventure.items.search.ItemSearchResult;
 
-public interface IContainer {
+public interface IContainer  {
 
 
 	public abstract void addItem(IItem item);

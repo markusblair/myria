@@ -48,6 +48,31 @@ angular.module("myria.controllers", [])
 		return 'danger';
 	}
 
+
+	$scope.energyBarType = function() {
+		var percent = $scope.model.character.energy/$scope.model.character.maxEnergy;
+
+		if (percent > 0.95) {
+			return 'success';
+		}
+		if (percent > 0.33) {
+			return 'info';
+		}
+		return 'danger';
+	}
+
+	$scope.energyReserveBarType = function() {
+		var percent = $scope.model.character.energyReserve/$scope.model.character.maxEnergyReserve;
+
+		if (percent > 0.95) {
+			return 'success';
+		}
+		if (percent > 0.33) {
+			return 'info';
+		}
+		return 'danger';
+	}
+
 	$scope.command = function(cmd) {
 		commandService.command(cmd);
 	};
@@ -73,7 +98,9 @@ angular.module("myria.controllers", [])
 				race:"",
 				str:0,
 				agi:0,
-				spe:0
+				spe:0,
+				int:0,
+				sta:0
 			}
 	}
 	

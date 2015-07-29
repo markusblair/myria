@@ -102,4 +102,17 @@ public interface ICharacterData extends IEffectableCharacterData {
 
 	public abstract int getReflex();
 
+	public abstract int getEnergy();
+	
+	public abstract int getEnergyReserve();
+	
+	public abstract void setEnergy(int energy);
+
+	public abstract int getMaxEnergyReserve();
+
+	public abstract int getMaxEnergy();
+
+	public abstract void setEnergyReserve(int energyReserve);
+
+	public abstract int getStamina();
 }

@@ -32,6 +32,7 @@ import org.adventure.random.SkillCheckResult;
 import org.adventure.random.SkillDelegate;
 import org.adventure.random.SkillType;
 import org.adventure.rooms.CityOfMyria;
+import org.adventure.spells.Spell;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -142,6 +143,92 @@ public class Character implements ICharacter {
 	}
 	
 	
+	@Override
+	public int getEnergy() {
+		return characterData.getEnergy();
+	}
+
+	@Override
+	public void addEnergyReserve(int energyReserve) {
+		if (energyReserve > 0) {
+			int newEnergyReserve = characterData.getEnergyReserve() + energyReserve;
+			if (newEnergyReserve > characterData.getMaxEnergyReserve()) {
+				newEnergyReserve = characterData.getMaxEnergyReserve();
+			}
+			if (newEnergyReserve != characterData.getEnergyReserve()) {
+				characterData.setEnergyReserve(newEnergyReserve);			
+				sendCharacterUpdate("energyReserve", newEnergyReserve);
+			}
+		}
+	}
+
+	public void setEnergy(int energy) {
+		if (energy < 0) {
+			energy = 0;
+		}
+		if (energy > characterData.getMaxEnergy()) {
+			energy = characterData.getMaxEnergy();
+		}
+		if (energy != characterData.getEnergy()) {
+			characterData.setEnergy(energy);			
+			sendCharacterUpdate("energy", energy);
+		}
+	}
+	
+	private float energyAbsorbed = 0f;
+	protected void recoverEnergy() {
+		boolean fullEnergy = characterData.getEnergy() == characterData.getMaxEnergy();
+		boolean hasEnergyReserve = characterData.getEnergyReserve() > 0;
+		if (hasEnergyReserve && !fullEnergy && !isBusy()) {	
+			//Move Energy from reserve to refill energy.
+			float e = (getEnergyRecoveryModifier() / 500f);
+			energyAbsorbed = energyAbsorbed + e;
+			int energyToAbsorb = (int) energyAbsorbed;
+			if (characterData.getEnergyReserve() < energyToAbsorb) {
+				energyToAbsorb = characterData.getEnergyReserve();
+			}
+			if (energyToAbsorb > 0 && energyToAbsorb <= characterData.getEnergyReserve()) {
+				energyAbsorbed = energyAbsorbed - energyToAbsorb;
+				int newEnergyReserve = characterData.getEnergyReserve() - energyToAbsorb;
+				characterData.setEnergyReserve(newEnergyReserve);
+				sendCharacterUpdate("energyReserve", newEnergyReserve);
+				setEnergy(this.characterData.getEnergy() + energyToAbsorb);
+			}
+		}			
+	}
+	
+	private float energyLoss = 0f;
+	protected void loseEnergy() {
+		energyLoss = energyLoss + 0.1f;
+		if (energyLoss >= 1) {
+//			boolean fullEnergy = characterData.getEnergy() == characterData.getMaxEnergy();
+			boolean hasEnergyReserve = characterData.getEnergyReserve() > 0;
+			if (hasEnergyReserve) {
+				// Reduce energy reserve.
+				int newEnergyReserve = characterData.getEnergyReserve() - (int)energyLoss;
+				energyLoss = 0;
+				characterData.setEnergyReserve(newEnergyReserve);
+				sendCharacterUpdate("energyReserve", newEnergyReserve);
+			}
+			else { //No Energy Reserve
+				boolean hasEnergy = characterData.getEnergy() > 0;
+				if (hasEnergy) {
+					int newEnergyReserve = characterData.getEnergy() - (int)energyLoss;
+					energyLoss = 0;
+					setEnergy(newEnergyReserve);
+				}
+				else { // Has no energy.. something bad should start happening..like health should be reduced.
+					
+				}
+			}
+		}
+	}
+	
+	
+	private float getEnergyRecoveryModifier() {
+		return getExperienceModifier();
+	}
+	
 	public void setMana(int mana) {
 		if (mana < 0) {
 			mana = 0;
@@ -165,12 +252,15 @@ public class Character implements ICharacter {
 	
 	private float manaAbsorbed = 0f;
 	protected void recoverMana() {
-		float m = (this.characterData.getMaxMana() * getManaRecoveryModifier() / 500f);
-		manaAbsorbed = manaAbsorbed + m;
-		int manaToAbsorb = (int) manaAbsorbed;
-		if (manaToAbsorb > 0) {
-			manaAbsorbed = manaAbsorbed - manaToAbsorb;
-			setMana(this.characterData.getMana() + manaToAbsorb);
+		boolean spellPrepared =  (this.getLeftHand() instanceof Spell || this.getRightHand() instanceof Spell);
+		if (!spellPrepared) {
+			float m = (this.characterData.getMaxMana() * getManaRecoveryModifier() / 2000f);
+			manaAbsorbed = manaAbsorbed + m;
+			int manaToAbsorb = (int) manaAbsorbed;
+			if (manaToAbsorb > 0) {
+				manaAbsorbed = manaAbsorbed - manaToAbsorb;
+				setMana(this.characterData.getMana() + manaToAbsorb);
+			}			
 		}
 	}
 	
@@ -730,6 +820,8 @@ public class Character implements ICharacter {
 						Character.this.absorbExperience();
 						Character.this.recoverMana();
 						Character.this.expireEffects();
+						Character.this.recoverEnergy();
+						Character.this.loseEnergy();
 					} catch (Exception e) {
 						log.error(new StringBuilder("Error running timer task for character ").append(getName()).toString(), e);
 					}
@@ -740,7 +832,7 @@ public class Character implements ICharacter {
 	}
 	
 	
-	public void setBusyFor(int busyFor) {
+	public void addBusyFor(int busyFor) {
 		busyFor =  (int)(busyFor + (1 - (0.1f * this.getSpeed())));
 		if (busyFor < 0 ) {
 			busyFor = 0;
@@ -773,6 +865,10 @@ public class Character implements ICharacter {
 		}
 		
 		return result;
+	}
+	
+	public void setBusyFor(int busyFor) {
+		this.busyFor.set(busyFor);
 	}
 	
 	@JsonIgnore
@@ -942,6 +1038,11 @@ public class Character implements ICharacter {
 	@Override
 	public int getReflex() {
 		return characterData.getReflex();
+	}
+
+	@Override
+	public int getStamina() {
+		return characterData.getStamina();
 	}
 
 	public IItem getLeftHand() {
@@ -1137,6 +1238,23 @@ public class Character implements ICharacter {
 		return characterData.getMaxMind();
 	}
 
+	public int getCarriedWeight() {
+		int total =0;
+		for (List<IWearable> wearables : getClothing().values()) {
+			for (IWearable iWearable : wearables) {
+				if (iWearable instanceof IContainer) {
+					IItem item = (IItem) iWearable;
+					System.out.println(item.getName() + ":" + item.getWeight());
+					total = total + item.getWeight();
+				}
+			}
+		}
+		for (Armor armor : getWornArmor()) {
+			total = total + armor.getWeight();
+		}
+		return total;
+	}
+	
 	@Override
 	public void sendRoom() {
 		if (this.characterSession != null) {
@@ -1203,4 +1321,6 @@ public class Character implements ICharacter {
 		sendData(dataMessage.getData());
 	}
 
+
+	
 }

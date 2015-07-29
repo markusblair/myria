@@ -81,14 +81,27 @@ public class AccountController {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String,Object> pc = mapper.readValue(line, Map.class);
 		
+		int str = Integer.parseInt(pc.get("str").toString());
+		int agi =Integer.parseInt(pc.get("agi").toString());
+		int spe = Integer.parseInt(pc.get("spe").toString());
+		int intel = Integer.parseInt(pc.get("int").toString());
+		int sta = Integer.parseInt(pc.get("sta").toString());
+		
+		int totPoints = (str + agi + spe + intel + sta);
+		
+		if (totPoints != 50) {
+			throw new RuntimeException("Not a valid number of points");
+		}
+		
 		org.adventure.character.CharacterData characterData = new org.adventure.character.CharacterData();
 		characterData.setId(UUID.randomUUID().toString());
 	    characterData.setUserId(request.getUserPrincipal().getName());
 	    characterData.setName((String)pc.get("name"));
-	    characterData.setStrength(Integer.parseInt(pc.get("str").toString()));
-	    characterData.setAgility(Integer.parseInt(pc.get("agi").toString()));
-	    characterData.setSpeed(Integer.parseInt(pc.get("spe").toString()));
-	    characterData.setInteligence(Integer.parseInt(pc.get("int").toString()));
+	    characterData.setStrength(str);
+	    characterData.setAgility(agi);
+		characterData.setSpeed(spe);
+		characterData.setInteligence(intel);
+		characterData.setStamina(sta);
 	    characterData.setRoomId(CityOfMyria.TRAINER);
 	    characterData.setMaxHealth(new StatReference(100));
 

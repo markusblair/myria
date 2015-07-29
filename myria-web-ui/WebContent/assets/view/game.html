@@ -62,7 +62,12 @@
 				<div class="row">
 					<progressbar value="model.character.mana" max="model.character.maxMana" type="{{manaBarType()}}"><span style="color:black; white-space:nowrap;">Mana {{model.character.mana}} / {{model.character.maxMana}}</span></progressbar>
 				</div>
-
+				<div class="row">
+					<progressbar value="model.character.energy" max="100" type="{{energyBarType()}}"><span style="color:black; white-space:nowrap;">Energy {{model.character.energy}} / {{model.character.maxEnergy}}</span></progressbar>
+				</div>
+				<div class="row">
+					<progressbar value="model.character.energyReserve" max="100" type="{{energyReserveBarType()}}"><span style="color:black; white-space:nowrap;">Energy Reserve {{model.character.energyReserve}} / {{model.character.maxEnergyReserve}}</span></progressbar>
+				</div>
 	    		<div class="mana row"> Mana</div>
 	    		<div class="row">
 	    		Right:

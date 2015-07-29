@@ -9,13 +9,13 @@ public abstract class Action {
 		
 		private List<String> commandPatters = new ArrayList<String>();
 		public abstract void action(Command command, ICharacter character);
-
+		
 		public final void performAction(Command command, ICharacter character) {
 			if (isAllowed(character)) {
 				action(command, character);	
 				int duration = getExecutionTime(character);
 				if (duration > 0) {
-					character.setBusyFor(duration);
+					character.addBusyFor(duration);
 				}
 			}
 		}
@@ -40,8 +40,18 @@ public abstract class Action {
 			int duration = getExecutionTime(character);
 			boolean isBusy = character.isBusy();
 			if (duration > 0 && isBusy) {
-				result = false;
-				character.sendMessage(new StringBuilder("Wait ").append(character.getBusyFor()).append(" seconds.").toString());
+				int busyFor = character.getBusyFor();
+				float energyLoss = (float)busyFor * 10f / (float)character.getStamina();
+				int intEnergyLoss = 1 + (int)energyLoss;
+				if (intEnergyLoss > character.getEnergy()) {
+					result = false;
+					character.sendMessage(new StringBuilder("Wait ").append(character.getBusyFor()).append(" seconds.").toString());
+				}
+				else {
+					System.out.println("busyFor:" + busyFor + " energyLoss:" + intEnergyLoss);
+					character.setEnergy(character.getEnergy() - intEnergyLoss);
+					character.setBusyFor(busyFor/2);
+				}
 			}
 			return result;
 		};

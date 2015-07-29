@@ -29,7 +29,7 @@ public class Room extends CharacterGroup implements IContainer {
 	String name;
 	String description;
 	List<IItem> items = new ArrayList<IItem>();
-	private int travelSpeed = 0;
+	private int travelSpeed = 1;
 	
 	protected Room() {
 		

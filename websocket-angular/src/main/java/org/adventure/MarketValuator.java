@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.adventure.items.IItem;
 import org.adventure.items.Wearable;
 import org.adventure.items.armor.Armor;
+import org.adventure.items.food.Food;
 import org.adventure.items.weapons.LoadableWeapon;
 import org.adventure.items.weapons.Weapon;
 
@@ -35,6 +36,10 @@ public class MarketValuator {
 			float damagePerSec = 1 + maxMeanDamage/baseAttackRate;
 			int value = Math.round(damagePerSec * damagePerSec * damagePerSec * damagePerSec * damagePerSec * damagePerSec * damagePerSec);
 			return value;
+		}
+		if (item instanceof Food) {
+			Food food = (Food)item;
+			return food.getEnergy()/ 50;
 		}
 		if (item instanceof Armor) {
 			Armor armor = (Armor) item;

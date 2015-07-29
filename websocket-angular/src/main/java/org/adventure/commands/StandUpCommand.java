@@ -15,13 +15,13 @@ public class StandUpCommand extends Action {
 	public void action(Command command, ICharacter character) {
 		if (character.getPlayerState().equals(PlayerState.STANDING) == false) {
 			if (character.getPlayerState().equals(PlayerState.LAYING)) {
-				character.setBusyFor(8);
+				character.addBusyFor(8);
 			}
 			else if (character.getPlayerState().equals(PlayerState.KNELLING)) {
-				character.setBusyFor(3);
+				character.addBusyFor(3);
 			}
 			else if (character.getPlayerState().equals(PlayerState.SITTING)) {
-				character.setBusyFor(5);
+				character.addBusyFor(5);
 			}
 			character.setState(PlayerState.STANDING);
 		}

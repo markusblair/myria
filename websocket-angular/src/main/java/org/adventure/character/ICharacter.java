@@ -126,6 +126,10 @@ public interface ICharacter extends IContainer, IItem {
 
 	public abstract int getHealth();
 
+	public abstract int getEnergy();
+	
+	public abstract void setEnergy(int energy);
+	
 	public abstract void setMaxHealth(int health);
 
 	public abstract int getExperience();
@@ -160,9 +164,13 @@ public interface ICharacter extends IContainer, IItem {
 
 	public abstract int getTotalSkillLevels();
 	
-	public abstract void setBusyFor(int time);
+	public abstract void addBusyFor(int time);
 	
 	public abstract int getBusyFor();
+	
+	public abstract void setBusyFor(int busyFor);
+	
+	public abstract void addEnergyReserve(int energy);
 	
 	public boolean isBusy();
 	
@@ -194,5 +202,7 @@ public interface ICharacter extends IContainer, IItem {
 
 	public abstract int getReflex();
 
+	public abstract int getStamina();
+	
 	public abstract int getWill();
 }

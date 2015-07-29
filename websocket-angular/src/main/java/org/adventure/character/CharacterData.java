@@ -40,10 +40,16 @@ public class CharacterData implements ICharacterData  {
 	private int strength = 0;
 	private int agility = 0;
 	private int speed = 0;
+	private int stamina = 0;
 	private int inteligence = 0;
 	private int constitution = 0;
 	private int reflex = 0;
 	private int will = 0;
+	
+	private int energy = 100;
+	private int maxEnergy = 100;
+	private int energyReserve = 100;
+	private int maxEnergyReserve = 100;
 	
 	private PlayerState playerState = PlayerState.STANDING;
 	private List<String> knownSpells = new ArrayList<String>();
@@ -115,6 +121,36 @@ public class CharacterData implements ICharacterData  {
 		this.mind = mind;
 	}
 	@Override
+	public int getEnergy() {
+		return energy;
+	}
+	public void setEnergy(int energy) {
+		this.energy = energy;
+	}
+	@Override
+	public int getEnergyReserve() {
+		return energyReserve;
+	}
+	@Override
+	public void setEnergyReserve(int energyReserve) {
+		this.energyReserve = energyReserve;
+	}
+	
+	@Override
+	public int getMaxEnergy() {
+		return maxEnergy;
+	}
+	public void setMaxEnergy(int maxEnergy) {
+		this.maxEnergy = maxEnergy;
+	}
+	@Override
+	public int getMaxEnergyReserve() {
+		return maxEnergyReserve;
+	}
+	public void setMaxEnergyReserve(int maxEnergyReserve) {
+		this.maxEnergyReserve = maxEnergyReserve;
+	}
+	@Override
 	@Transient
 	public int getMaxMind() {
 		return getInteligence() * 500;
@@ -172,9 +208,13 @@ public class CharacterData implements ICharacterData  {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	/* (non-Javadoc)
-	 * @see org.adventure.character.ICharacterData#getInteligence()
-	 */
+	@Override
+	public int getStamina() {
+		return stamina;
+	}
+	public void setStamina(int stamina) {
+		this.stamina = stamina;
+	}
 	@Override
 	public int getInteligence() {
 		return inteligence;

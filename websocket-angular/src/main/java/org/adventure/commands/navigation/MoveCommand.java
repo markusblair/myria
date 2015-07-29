@@ -23,16 +23,16 @@ public class MoveCommand extends Action {
 
 	@Override
 	public boolean isAllowed(ICharacter character) {
-		super.isAllowed(character);
-		if ( character.getPlayerState().equals(PlayerState.STANDING)) {
-			return true;
+		if ( character.getPlayerState().equals(PlayerState.STANDING) == false) {
+			character.sendMessage("You must stand up to move.");
+			return false;
 		}
-		character.sendMessage("You must stand up to move.");
-		return false;
+		boolean result = super.isAllowed(character);
+		return result;
 	}
 	
 	public void move(ICharacter character) {
-		character.setBusyFor(character.getCurrentRoom().getTravelSpeed());
+		//character.setBusyFor(character.getCurrentRoom().getTravelSpeed());
 		character.gotoRoom(roomToMoveTo);			
 	}
 

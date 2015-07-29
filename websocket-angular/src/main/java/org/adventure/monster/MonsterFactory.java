@@ -54,6 +54,7 @@ public class MonsterFactory implements IMonsterFactory {
 			monster.setSpeed(10);
 			monster.setStrength(4);
 			monster.setAgility(8);
+			monster.setWill(2);
 			monster.addSkillLevel(SkillType.MELEE);
 //			targetSelector = new DefaultTargetSelector(monster);
 			
@@ -68,6 +69,7 @@ public class MonsterFactory implements IMonsterFactory {
 			monster.setSpeed(8);
 			monster.setStrength(6);
 			monster.setAgility(10);
+			monster.setWill(23);
 			monster.addSkillLevel(SkillType.MELEE);
 			Task parentTask = new SelectorTask().add(new SelectTargetTask())
 					.add(new SequenceTask()
@@ -86,6 +88,7 @@ public class MonsterFactory implements IMonsterFactory {
 			monster.setSpeed(6);
 			monster.setStrength(15);
 			monster.setAgility(8);
+			monster.setWill(5);
 			monster.addSkillLevel(SkillType.MELEE);
 			monster.addSkillLevel(SkillType.MELEE);
 //			targetSelector = new DefaultTargetSelector(monster);
@@ -98,6 +101,7 @@ public class MonsterFactory implements IMonsterFactory {
 			monster = new Monster("Rat", 0, 5, 6, webSocketDataService);
 			Weapon w = new Weapon().setWeaponType(SkillType.HAND_TO_HAND).addDamage("Bite", DamageType.PIERCE,  2, 1);
 			monster.setDefaultWeapon(w);
+			monster.setWill(1);
 //			targetSelector = new DefaultTargetSelector(monster);
 //			monster.getAiManager().addChainHandler(new BattleReadyTargetIsAvailable(targetSelector));
 //			monster.getAiManager().addChainHandler(new FleeWhenOverwhelmed(4f));

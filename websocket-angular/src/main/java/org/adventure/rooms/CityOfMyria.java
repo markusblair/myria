@@ -11,6 +11,7 @@ import org.adventure.items.IItemFactory;
 import org.adventure.items.WearableContainerFactory;
 import org.adventure.items.WearableFactory;
 import org.adventure.items.armor.ArmorFactory;
+import org.adventure.items.food.FoodFactory;
 import org.adventure.items.weapons.WeaponFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -49,8 +50,10 @@ public class CityOfMyria {
 	
 	@Bean
 	public Room start() {
+		Container buffetTable = new Container("table", "A large buffet table.", 0, 0, "A large wooden buffet table.");
+		buffetTable.setVolumeCapacity(20);
+		Room aleHouse =   roomManager.createStore(MYRIAMS_ALE_HOUSE, new FoodFactory(), buffetTable).setDescription("You are in 'Cloe's Clothing'.");
 		
-		Room aleHouse = roomManager.createRoom(MYRIAMS_ALE_HOUSE);
 		aleHouse.setDescription("dark wood bar righ in front of you and restrant in a room behind the bar");
 		
 		

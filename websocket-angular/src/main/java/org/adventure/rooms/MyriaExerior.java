@@ -32,7 +32,7 @@ public class MyriaExerior {
 	
 	@Bean
 	public Room forest() {
-		roomGridFactory.createRoomGrid("northRoad", 1, 7, "A road leading through a dense forest.", 0);
+		roomGridFactory.createRoomGrid("northRoad", 1, 7, "A road leading through a dense forest.", 10);
 		
 		/*
 		 * Outside the North Gate

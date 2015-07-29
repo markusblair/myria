@@ -21,12 +21,12 @@ public class IsTargetValidTask extends ConditionalTask {
 				&& PlayerState.DEAD.equals(currentTarget.getPlayerState()) == false
 				) {
 			validTarget = true;
-			log.info("Target is valid:" + currentTarget.getName());
+			log.debug("Target is valid:" + currentTarget.getName());
 		}
 		if (currentTarget == null) {
-			log.info("Current Target is null");
+			log.debug("Current Target is null");
 		} else if (validTarget == false) {
-			log.info("Target is not valid: monsterRoom=" + monster.getCurrentRoom().getId() +
+			log.debug("Target is not valid: monsterRoom=" + monster.getCurrentRoom().getId() +
 					" characterRoom=" +currentTarget.getCurrentRoom().getId() + 
 					" targetState=" + currentTarget.getPlayerState());
 		}
