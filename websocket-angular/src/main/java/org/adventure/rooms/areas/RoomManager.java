@@ -1,4 +1,4 @@
-package org.adventure;
+package org.adventure.rooms.areas;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -9,6 +9,8 @@ import org.adventure.commands.navigation.MoveCommand;
 import org.adventure.commands.navigation.PlayerMovementCondition;
 import org.adventure.items.Container;
 import org.adventure.items.IItemFactory;
+import org.adventure.rooms.Room;
+import org.adventure.rooms.Store;
 import org.springframework.stereotype.Component;
 
 @Component

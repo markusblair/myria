@@ -1,8 +1,10 @@
 package org.adventure.commands;
 
-import org.adventure.PlayerState;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LayDownCommand extends Action {
 
 	public LayDownCommand() {

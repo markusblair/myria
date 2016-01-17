@@ -9,29 +9,22 @@ import java.util.UUID;
 
 import javax.persistence.Transient;
 
-import org.adventure.PlayerState;
-import org.adventure.Room;
 import org.adventure.character.BodyPart;
 import org.adventure.character.BodyPartType;
 import org.adventure.character.Character;
 import org.adventure.character.CharacterData;
 import org.adventure.character.CharacterDataEffectsProxy;
-import org.adventure.character.DataMessage;
 import org.adventure.character.ICharacter;
 import org.adventure.character.IWebSocketDataService;
+import org.adventure.character.PlayerState;
 import org.adventure.character.stats.StatReference;
-import org.adventure.commands.Action;
-import org.adventure.commands.Command;
-import org.adventure.commands.StandUpCommand;
-import org.adventure.commands.combat.AttackCommand;
-import org.adventure.commands.navigation.Direction;
-import org.adventure.commands.navigation.MoveCommand;
+import org.adventure.messaging.DataMessage;
 import org.adventure.monster.ai.IAiChainManager;
 import org.adventure.monster.ai.MonsterAiManager;
 import org.adventure.npc.ai.BTContext;
-import org.adventure.npc.ai.BTTaskContext;
 import org.adventure.npc.ai.Task;
 import org.adventure.random.RandomCollection;
+import org.adventure.rooms.Room;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

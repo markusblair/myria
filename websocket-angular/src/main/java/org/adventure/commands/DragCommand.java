@@ -1,9 +1,11 @@
 package org.adventure.commands;
 
-import org.adventure.PlayerState;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.commands.combat.CharacterCommand;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DragCommand extends CharacterCommand {
 
 	public DragCommand() {

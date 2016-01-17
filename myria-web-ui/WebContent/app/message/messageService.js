@@ -41,7 +41,9 @@ angular.module("myria.services", [])
                 service.addMessage('./app/message/string.html',msg.message);
             }
             if (msg.attackResult) {
-                service.addMessage('./app/message/attack.html', angular.fromJson(msg.attackResult));
+                service.model.rawMessage.push(msg);
+                var ar = angular.fromJson(msg.attackResult);
+                service.addMessage('./app/message/attack.html',ar );
             }
             if (msg.room) {
                 service.clearMessages();

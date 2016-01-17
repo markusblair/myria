@@ -2,16 +2,14 @@ package org.adventure.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.character.ICharacterData;
 import org.adventure.character.IEffectableCharacterData;
 import org.adventure.character.PlayerCharacter;
 import org.adventure.commands.CommandHandler;
 import org.adventure.persistance.CharacterDao;
-import org.adventure.rooms.CityOfMyria;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.adventure.rooms.Room;
+import org.adventure.rooms.areas.CityOfMyria;
+import org.adventure.rooms.areas.RoomManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/game")
 public class GameController {
-	private static Logger log = LoggerFactory.getLogger(GameController.class);
+//	private static Logger log = LoggerFactory.getLogger(GameController.class);
 
     @Autowired
     private CharacterDao service;

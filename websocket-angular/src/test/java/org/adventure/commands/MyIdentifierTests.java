@@ -1,9 +1,9 @@
 package org.adventure.commands;
 
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.character.CharacterData;
 import org.adventure.character.PlayerCharacter;
+import org.adventure.rooms.Room;
+import org.adventure.rooms.areas.RoomManager;
 import org.junit.Before;
 
 public class MyIdentifierTests {

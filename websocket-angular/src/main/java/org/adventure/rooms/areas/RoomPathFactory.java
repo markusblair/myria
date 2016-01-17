@@ -1,10 +1,9 @@
-package org.adventure.rooms;
+package org.adventure.rooms.areas;
 
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.commands.CommandCondition;
 import org.adventure.commands.navigation.BiDirection;
 import org.adventure.commands.navigation.Direction;
+import org.adventure.rooms.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -50,13 +49,13 @@ public class RoomPathFactory {
 			this.room.setTravelSpeed(this.getTravelSpeed());	
 			
 			if (isAutojoinAdjacentRooms()) {
-				System.out.println("Adding room id: " + newRoomId);
+//				System.out.println("Adding room id: " + newRoomId);
 				for (Direction d : Direction.values()) {
 					String adjacentRoomId = createId(prefix, getCoordinates(d));
-					System.out.println("    adj room id exists? :" + adjacentRoomId);
+//					System.out.println("    adj room id exists? :" + adjacentRoomId);
 					if (roomManager.hasRoom(adjacentRoomId)) {
 						roomManager.addBiDirectionalNavigation(adjacentRoomId, getBiDirection(d), this.room.getId());
-						System.out.println("         Adding bi directional " + getBiDirection(d) + " navigaiton " + adjacentRoomId + "  to " +this.room.getId());
+//						System.out.println("         Adding bi directional " + getBiDirection(d) + " navigaiton " + adjacentRoomId + "  to " +this.room.getId());
 					}
 				}
 			}

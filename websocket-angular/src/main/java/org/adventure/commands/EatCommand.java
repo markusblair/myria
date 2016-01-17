@@ -3,7 +3,9 @@ package org.adventure.commands;
 import org.adventure.character.ICharacter;
 import org.adventure.items.IConsumable;
 import org.adventure.items.search.ItemSearchResult;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EatCommand extends ItemCommand {
 
 	public EatCommand() {

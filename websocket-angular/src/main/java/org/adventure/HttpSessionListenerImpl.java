@@ -4,7 +4,6 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import org.adventure.items.armor.Armor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

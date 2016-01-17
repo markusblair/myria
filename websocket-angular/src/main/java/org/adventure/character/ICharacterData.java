@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.adventure.IContainer;
-import org.adventure.PlayerState;
 import org.adventure.character.stats.StatReference;
 import org.adventure.items.IItem;
 import org.adventure.items.IWearable;

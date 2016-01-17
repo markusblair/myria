@@ -2,8 +2,9 @@ package org.adventure.character;
 
 import java.util.Map;
 
-import org.adventure.Room;
 import org.adventure.items.armor.AttackResult;
+import org.adventure.messaging.DataMessage;
+import org.adventure.rooms.Room;
 
 public interface IWebSocketDataService {
 

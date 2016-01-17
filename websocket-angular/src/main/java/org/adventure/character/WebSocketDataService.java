@@ -5,8 +5,9 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.adventure.Room;
 import org.adventure.items.armor.AttackResult;
+import org.adventure.messaging.DataMessage;
+import org.adventure.rooms.Room;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,7 @@
-package org.adventure.rooms;
+package org.adventure.rooms.areas;
 
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.commands.navigation.BiDirection;
+import org.adventure.rooms.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

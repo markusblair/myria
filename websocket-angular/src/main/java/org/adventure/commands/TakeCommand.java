@@ -3,7 +3,9 @@ package org.adventure.commands;
 import org.adventure.IContainer;
 import org.adventure.character.ICharacter;
 import org.adventure.items.search.ItemSearchResult;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TakeCommand extends ItemCommand {
 	public TakeCommand() {
 		super();

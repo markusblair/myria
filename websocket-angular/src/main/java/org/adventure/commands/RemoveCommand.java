@@ -4,7 +4,9 @@ import org.adventure.character.ICharacter;
 import org.adventure.items.IWearable;
 import org.adventure.items.armor.Armor;
 import org.adventure.items.search.ItemSearchResult;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RemoveCommand extends ItemCommand {
 	public RemoveCommand() {
 		super();

@@ -1,9 +1,10 @@
-package org.adventure.character;
+package org.adventure.messaging;
 
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
 
+import org.adventure.character.ICharacter;
 import org.adventure.items.IItem;
 import org.adventure.items.armor.AttackResult;
 import org.slf4j.Logger;

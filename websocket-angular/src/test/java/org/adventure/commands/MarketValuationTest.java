@@ -1,7 +1,7 @@
 package org.adventure.commands;
 
-import org.adventure.MarketValuator;
 import org.adventure.items.weapons.WeaponFactory;
+import org.adventure.rooms.MarketValuator;
 import org.junit.Test;
 
 public class MarketValuationTest {

@@ -1,5 +1,6 @@
-package org.adventure;
+package org.adventure.rooms;
 
+import org.adventure.IPlayerPrompt;
 import org.adventure.character.ICharacter;
 import org.adventure.commands.Command;
 import org.adventure.commands.CommandCondition;

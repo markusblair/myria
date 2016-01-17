@@ -1,9 +1,9 @@
 package org.adventure.commands.navigation;
-import org.adventure.PlayerState;
-import org.adventure.Room;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.commands.Action;
 import org.adventure.commands.Command;
+import org.adventure.rooms.Room;
 
 public class MoveCommand extends Action {
 	private Room roomToMoveTo;

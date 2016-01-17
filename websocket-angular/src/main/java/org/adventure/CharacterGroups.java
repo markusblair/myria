@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.adventure.character.ICharacter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class CharacterGroups {
-	private static Logger log = LoggerFactory.getLogger(CharacterGroup.class);
+//	private static Logger log = LoggerFactory.getLogger(CharacterGroup.class);
 	private Collection<CharacterGroup> characterGroups = new ArrayList<CharacterGroup>();
 	
 	public CharacterGroup getCharacterGroup(ICharacter character) {

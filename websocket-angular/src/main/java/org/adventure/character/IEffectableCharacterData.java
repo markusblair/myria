@@ -2,7 +2,6 @@ package org.adventure.character;
 
 import java.util.Map;
 
-import org.adventure.PlayerState;
 import org.adventure.character.stats.StatReference;
 import org.adventure.random.Skill;
 import org.adventure.random.SkillType;

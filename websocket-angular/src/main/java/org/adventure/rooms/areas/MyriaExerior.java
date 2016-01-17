@@ -1,12 +1,11 @@
-package org.adventure.rooms;
+package org.adventure.rooms.areas;
 
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.commands.navigation.BiDirection;
 import org.adventure.commands.navigation.Direction;
 import org.adventure.commands.navigation.MonsterRestrictionCondition;
 import org.adventure.monster.IMonsterFactory;
 import org.adventure.monster.MonsterSpawner;
+import org.adventure.rooms.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

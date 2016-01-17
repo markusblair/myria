@@ -2,7 +2,9 @@ package org.adventure.commands;
 
 import org.adventure.character.ICharacter;
 import org.adventure.items.IItem;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SwapCommand extends Action {
 
 	public SwapCommand() {

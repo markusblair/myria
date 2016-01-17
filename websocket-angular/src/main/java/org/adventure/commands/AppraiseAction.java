@@ -1,8 +1,8 @@
 package org.adventure.commands;
 
-import org.adventure.MarketValuator;
 import org.adventure.character.ICharacter;
 import org.adventure.items.search.ItemSearchResult;
+import org.adventure.rooms.MarketValuator;
 
 public class AppraiseAction extends ItemCommand {
 	MarketValuator marketValuator;

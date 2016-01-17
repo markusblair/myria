@@ -1,7 +1,7 @@
 <div class="attack-msg-box col-sm-12">
 	<div class="row">
-		<Span>{{message.message.attacker}} vs. {{message.message.defender}}</Span>
-		<Span ng-show="message.message.hitCheck.value1 > message.message.hitCheck.value2"> and Hits! for {{message.message.damageCalculation.totalDamage}} points of damage to {{message.message.damageCalculation.bodyPart}}.</Span>
+		<Span>{{message.message.actor.name}} vs. {{message.message.actee.name}}</Span>
+		<Span ng-show="message.message.hitCheck.value1 > message.message.hitCheck.value2"> and Hits! for {{message.message.damageCalculation.totalDamage}} points of damage to {{message.message.damageCalculation.bodyPart.name}}.</Span>
 		<Span ng-show="message.message.hitCheck.value1 < message.message.hitCheck.value2"> and Misses!</Span>
 	
 	</div>

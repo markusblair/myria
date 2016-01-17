@@ -1,11 +1,11 @@
 package org.adventure.commands;
 
-import org.adventure.PlayerState;
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.monster.Corpse;
-import org.adventure.rooms.CityOfMyria;
+import org.adventure.rooms.Room;
+import org.adventure.rooms.areas.CityOfMyria;
+import org.adventure.rooms.areas.RoomManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

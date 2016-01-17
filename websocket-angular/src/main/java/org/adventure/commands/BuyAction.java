@@ -1,10 +1,12 @@
 package org.adventure.commands;
 
 import org.adventure.IContainer;
-import org.adventure.ISalePrice;
 import org.adventure.character.ICharacter;
 import org.adventure.items.search.ItemSearchResult;
+import org.adventure.rooms.ISalePrice;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BuyAction extends ItemCommand {
 
 	public BuyAction() {

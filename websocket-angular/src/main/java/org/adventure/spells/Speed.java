@@ -3,8 +3,8 @@ package org.adventure.spells;
 import javax.jdo.annotations.EmbeddedOnly;
 
 import org.adventure.character.CharacterDataEffect;
-import org.adventure.character.DataMessage;
 import org.adventure.character.ICharacter;
+import org.adventure.messaging.DataMessage;
 import org.adventure.random.SkillType;
 
 @EmbeddedOnly

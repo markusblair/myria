@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 import org.adventure.CharacterGroup;
-import org.adventure.PlayerState;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.monster.Monster;
 import org.adventure.random.RandomCollection;
 import org.adventure.random.SkillCategory;

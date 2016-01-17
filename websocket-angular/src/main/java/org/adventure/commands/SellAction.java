@@ -1,10 +1,10 @@
 package org.adventure.commands;
 
 import org.adventure.IPlayerPrompt;
-import org.adventure.MarketValuator;
 import org.adventure.character.ICharacter;
 import org.adventure.items.QuantityItem;
 import org.adventure.items.search.ItemSearchResult;
+import org.adventure.rooms.MarketValuator;
 
 public class SellAction extends ItemCommand {
 	MarketValuator marketValuator;

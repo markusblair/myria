@@ -1,9 +1,6 @@
 package org.adventure.character;
 
 import javax.jdo.annotations.EmbeddedOnly;
-import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @EmbeddedOnly
 public class Injury {

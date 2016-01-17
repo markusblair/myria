@@ -2,10 +2,10 @@ package org.adventure.spells.illusion;
 
 import javax.jdo.annotations.EmbeddedOnly;
 
-import org.adventure.PlayerState;
 import org.adventure.character.CharacterDataEffect;
-import org.adventure.character.DataMessage;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
+import org.adventure.messaging.DataMessage;
 import org.adventure.random.Skill;
 import org.adventure.random.SkillCheckResult;
 import org.adventure.random.SkillType;

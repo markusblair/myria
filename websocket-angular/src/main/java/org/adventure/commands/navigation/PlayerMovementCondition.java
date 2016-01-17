@@ -1,7 +1,7 @@
 package org.adventure.commands.navigation;
 
-import org.adventure.PlayerState;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.commands.CommandCondition;
 
 public class PlayerMovementCondition extends CommandCondition {

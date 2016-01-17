@@ -1,6 +1,6 @@
 package org.adventure.monster.ai;
 
-import org.adventure.PlayerState;
+import org.adventure.character.PlayerState;
 import org.adventure.monster.Monster;
 import org.adventure.monster.MonsterFactory;
 import org.slf4j.Logger;

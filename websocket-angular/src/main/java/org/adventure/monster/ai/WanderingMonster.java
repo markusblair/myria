@@ -2,12 +2,12 @@ package org.adventure.monster.ai;
 
 import java.util.List;
 
-import org.adventure.Room;
 import org.adventure.commands.Action;
 import org.adventure.commands.navigation.Direction;
 import org.adventure.commands.navigation.MoveCommand;
 import org.adventure.monster.Monster;
 import org.adventure.random.RandomCollection;
+import org.adventure.rooms.Room;
 
 public class WanderingMonster implements IAiChainHandler {
 	public WanderingMonster() {

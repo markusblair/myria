@@ -1,4 +1,4 @@
-package org.adventure;
+package org.adventure.rooms;
 
 import org.adventure.character.ICharacter;
 import org.adventure.items.search.ItemSearchResult;

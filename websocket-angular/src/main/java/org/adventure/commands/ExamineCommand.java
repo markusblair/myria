@@ -2,7 +2,9 @@ package org.adventure.commands;
 
 import org.adventure.character.ICharacter;
 import org.adventure.items.search.ItemSearchResult;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ExamineCommand extends ItemCommand {
 
 	public ExamineCommand() {

@@ -1,4 +1,4 @@
-package org.adventure;
+package org.adventure.rooms;
 
 import org.adventure.commands.BuyAction;
 import org.adventure.commands.TakeCommand;

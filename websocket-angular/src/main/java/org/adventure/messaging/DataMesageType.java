@@ -1,4 +1,4 @@
-package org.adventure.character;
+package org.adventure.messaging;
 
 public enum DataMesageType {
 	ADD, UPDATE, DELETE

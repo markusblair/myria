@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.adventure.PlayerState;
-import org.adventure.Room;
+import org.adventure.character.PlayerState;
 import org.adventure.random.RandomCollection;
+import org.adventure.rooms.Room;
 
 public class MonsterSpawner {
 	protected static Timer timer = new Timer();

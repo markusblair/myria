@@ -1,7 +1,7 @@
 package org.adventure.npc.ai.tasks.conditionals;
 
-import org.adventure.PlayerState;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.monster.Monster;
 import org.adventure.npc.ai.BTContext;
 import org.slf4j.Logger;

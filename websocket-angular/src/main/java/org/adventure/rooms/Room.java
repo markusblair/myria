@@ -1,11 +1,13 @@
-package org.adventure;
+package org.adventure.rooms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.adventure.character.DataMessage;
+import org.adventure.CharacterGroup;
+import org.adventure.CharacterGroups;
+import org.adventure.IContainer;
 import org.adventure.character.ICharacter;
 import org.adventure.commands.Action;
 import org.adventure.commands.CommandCondition;
@@ -13,6 +15,7 @@ import org.adventure.commands.navigation.Direction;
 import org.adventure.commands.navigation.MoveCommand;
 import org.adventure.items.IItem;
 import org.adventure.items.search.ItemSearchResult;
+import org.adventure.messaging.DataMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +34,7 @@ public class Room extends CharacterGroup implements IContainer {
 	List<IItem> items = new ArrayList<IItem>();
 	private int travelSpeed = 1;
 	
-	protected Room() {
+	public Room() {
 		
 	}
 	

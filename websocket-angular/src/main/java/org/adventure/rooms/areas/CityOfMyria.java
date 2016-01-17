@@ -1,8 +1,5 @@
-package org.adventure.rooms;
+package org.adventure.rooms.areas;
 
-import org.adventure.Room;
-import org.adventure.RoomManager;
-import org.adventure.TrainingRoom;
 import org.adventure.commands.HealCommand;
 import org.adventure.commands.navigation.BiDirection;
 import org.adventure.commands.navigation.Direction;
@@ -13,6 +10,8 @@ import org.adventure.items.WearableFactory;
 import org.adventure.items.armor.ArmorFactory;
 import org.adventure.items.food.FoodFactory;
 import org.adventure.items.weapons.WeaponFactory;
+import org.adventure.rooms.Room;
+import org.adventure.rooms.TrainingRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

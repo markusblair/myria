@@ -5,8 +5,6 @@ import java.util.Map;
 
 import org.adventure.IContainer;
 import org.adventure.IPlayerPrompt;
-import org.adventure.PlayerState;
-import org.adventure.Room;
 import org.adventure.commands.Action;
 import org.adventure.commands.CommandCondition;
 import org.adventure.items.IItem;
@@ -19,10 +17,12 @@ import org.adventure.items.armor.DamageCalculation;
 import org.adventure.items.search.ItemSearchResult;
 import org.adventure.items.weapons.DamageType;
 import org.adventure.items.weapons.Weapon;
+import org.adventure.messaging.DataMessage;
 import org.adventure.random.IRandom;
 import org.adventure.random.Skill;
 import org.adventure.random.SkillCheckResult;
 import org.adventure.random.SkillType;
+import org.adventure.rooms.Room;
 
 public interface ICharacter extends IContainer, IItem {
 

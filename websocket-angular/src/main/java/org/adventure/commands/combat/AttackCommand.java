@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.adventure.CharacterGroup;
-import org.adventure.PlayerState;
 import org.adventure.character.BodyPart;
 import org.adventure.character.ICharacter;
+import org.adventure.character.PlayerState;
 import org.adventure.commands.Command;
 import org.adventure.items.armor.AttackResult;
 import org.adventure.items.armor.DamageCalculation;

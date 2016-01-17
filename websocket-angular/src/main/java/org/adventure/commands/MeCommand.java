@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.adventure.character.ICharacter;
 import org.adventure.items.IWearable;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MeCommand extends Action {
 
 	public MeCommand() {

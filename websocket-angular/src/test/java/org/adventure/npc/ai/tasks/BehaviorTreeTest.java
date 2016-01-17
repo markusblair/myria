@@ -128,6 +128,6 @@ public class BehaviorTreeTest {
 		System.out.println(context.getCurrentTaskContext().getTaskState());
 		System.out.println(context.getTaskCount()); 
 		Assert.assertEquals(BTTaskState.SUCESS, context.getCurrentTaskContext().getTaskState());
-		Assert.assertEquals(18, context.getTaskCount());
+		Assert.assertEquals(15, context.getTaskCount());
 	}
 }

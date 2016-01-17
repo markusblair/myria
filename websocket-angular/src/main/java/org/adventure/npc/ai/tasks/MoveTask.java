@@ -2,7 +2,6 @@ package org.adventure.npc.ai.tasks;
 
 import java.util.List;
 
-import org.adventure.Room;
 import org.adventure.commands.Action;
 import org.adventure.commands.navigation.Direction;
 import org.adventure.commands.navigation.MoveCommand;
@@ -11,6 +10,7 @@ import org.adventure.npc.ai.BTContext;
 import org.adventure.npc.ai.BTTaskState;
 import org.adventure.npc.ai.Task;
 import org.adventure.random.RandomCollection;
+import org.adventure.rooms.Room;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

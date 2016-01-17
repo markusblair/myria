@@ -1,4 +1,4 @@
-package org.adventure;
+package org.adventure.rooms;
 
 import java.util.concurrent.ThreadLocalRandom;
 

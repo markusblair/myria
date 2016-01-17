@@ -1,14 +1,14 @@
 package org.adventure.commands;
 
-import org.adventure.RoomManager;
-import org.adventure.SalePrice;
-import org.adventure.Store;
-import org.adventure.TrainingPrice;
 import org.adventure.character.CharacterData;
 import org.adventure.character.ICharacterData;
 import org.adventure.character.PlayerCharacter;
 import org.adventure.items.Item;
 import org.adventure.random.SkillType;
+import org.adventure.rooms.SalePrice;
+import org.adventure.rooms.Store;
+import org.adventure.rooms.TrainingPrice;
+import org.adventure.rooms.areas.RoomManager;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

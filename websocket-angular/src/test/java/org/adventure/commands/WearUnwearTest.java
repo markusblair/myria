@@ -3,8 +3,6 @@ package org.adventure.commands;
 import java.util.List;
 
 import org.adventure.IContainer;
-import org.adventure.Room;
-import org.adventure.RoomManager;
 import org.adventure.character.BodyPartType;
 import org.adventure.character.CharacterData;
 import org.adventure.character.ICharacterData;
@@ -14,6 +12,8 @@ import org.adventure.items.WearableContainer;
 import org.adventure.items.WearableType;
 import org.adventure.items.armor.Armor;
 import org.adventure.items.armor.ArmorFactory;
+import org.adventure.rooms.Room;
+import org.adventure.rooms.areas.RoomManager;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
